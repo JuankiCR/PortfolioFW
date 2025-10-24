@@ -1,14 +1,16 @@
 # --- build (Vite) ---
 FROM node:20-alpine AS build
 WORKDIR /app
+
 COPY package*.json ./
-RUN npm ci
+
+RUN npm config set registry https://registry.npmjs.org/ \
+  && npm ci --no-audit --no-fund
+
 COPY . .
 RUN npm run build
 
-# --- serve (Nginx) ---
 FROM nginx:alpine
-# SPA: enviar todo a index.html
 RUN printf "server { \
   listen 80; \
   server_name _; \
