@@ -1,6 +1,6 @@
 node_modules
-dist
 .git
-.github
-Dockerfile
-.dockerignore
+.env
+.npmrc
+dist
+package-lock.json
