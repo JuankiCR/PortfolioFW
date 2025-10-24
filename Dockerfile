@@ -4,15 +4,14 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN printf "registry=https://registry.npmjs.org/\nalways-auth=false\n" > /root/.npmrc \
-  && npm config delete //registry.npmjs.org/:_authToken || true \
-  && npm config set registry https://registry.npmjs.org/ \
-  && npm ci --no-audit --no-fund
+RUN npm ci --no-audit --no-fund --registry=https://registry.npmjs.org/
 
 COPY . .
+
 RUN npm run build
 
 FROM nginx:alpine
+
 RUN printf "server { \
   listen 80; \
   server_name _; \
@@ -22,4 +21,6 @@ RUN printf "server { \
 }" > /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/dist /usr/share/nginx/html
+
 EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
