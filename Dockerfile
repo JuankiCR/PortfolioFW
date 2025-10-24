@@ -3,12 +3,12 @@ WORKDIR /app
 
 RUN apk add --no-cache python3 make g++
 
-COPY package*.json ./
+COPY package.json ./
 
-RUN npm ci --include=optional --registry=https://registry.npmjs.org/ || \
-    npm install --registry=https://registry.npmjs.org/
+RUN npm install --registry=https://registry.npmjs.org/
 
 COPY . .
+
 RUN npm run build
 
 FROM nginx:alpine
