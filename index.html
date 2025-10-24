@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-brand="default" class="no-transitions">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta property="og:title" content="JuankiCR | Portfolio">
+    <meta property="og:description"
+      content="With over two years of hands-on experience in dynamic work environments, I've been dedicated to the ongoing pursuit of excellence in crafting optimal web solutions.">
+    <meta property="og:image" content="https://appwrite.rbduck.com/v1/storage/buckets/68fb918a003713cbb851/files/68fbd0e2001b6c34bf84/view?project=68fb874d002dae6d8403&project=68fb874d002dae6d8403&mode=admin">
+    <meta property="og:url" content="https://www.juankicr.dev">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@JuankiCRH">
+    <meta name="twitter:title" content="JuankiCR | Portfolio">
+    <meta name="twitter:description"
+      content="With over two years of hands-on experience in dynamic work environments, I've been dedicated to the ongoing pursuit of excellence in crafting optimal web solutions.">
+    <meta name="twitter:image" content="https://appwrite.rbduck.com/v1/storage/buckets/68fb918a003713cbb851/files/68fbd0e2001b6c34bf84/view?project=68fb874d002dae6d8403&project=68fb874d002dae6d8403&mode=admin">
+
+    <title>JuankiCR | 2026</title>
+
+    <meta name="theme-color" content="#070604" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <style>
+      :root{
+        --bg:#070604; --card:#100f0d; --primary:#cbc5af; --secondary:#746ea1; --text:#eeebe5;
+      }
+      html, body{ background-color:var(--bg); color:var(--text); }
+      .no-transitions *, .no-transitions *::before, .no-transitions *::after{
+        transition:none !important; animation:none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      const html = document.documentElement;
+      requestAnimationFrame(()=>{ requestAnimationFrame(()=> html.classList.remove('no-transitions')); });
+    </script>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

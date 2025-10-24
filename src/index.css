@@ -1,0 +1,136 @@
+:root {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-brand] body{
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color .35s ease, color .35s ease;
+}
+html.no-transitions body{
+  transition: none !important;
+}
+
+*{ 
+  margin:0; 
+  padding:0; 
+  box-sizing:border-box; 
+  font-family: 'Inter', sans-serif;
+}
+#root{ width:100%; }
+body{
+  background-color: var(--bg);
+  color: var(--text);
+  margin:0 auto;
+  min-width:320px;
+  max-width:1200px;
+  min-height:100dvh;
+}
+
+/* utilidades */
+.bg-card{ background:var(--card); }
+.text-muted{ color: color-mix(in oklab, var(--text), var(--bg) 45%); }
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.65rem 1rem; border-radius:.75rem; font-weight:600;
+  border:1px solid transparent; cursor:pointer;
+}
+.btn-primary{ background:var(--primary); color:var(--bg); }
+.btn-secondary{ background:var(--secondary); color:var(--bg); }
+.btn-outline{ background:transparent; color:var(--primary); border:1px solid var(--primary); }
+.card{
+  background:var(--card); color:var(--text); padding:1rem; border-radius:1rem;
+  border:1px solid color-mix(in oklab, var(--text), var(--bg) 85%);
+}
+
+/* ========= Ripple overlay ========= */
+#theme-ripple{
+  position:fixed; inset:0; z-index:9999; pointer-events:none;
+  --x:50%; --y:50%;
+  opacity:0;
+  clip-path:circle(0 at var(--x) var(--y));
+  will-change: clip-path, background-color, opacity;
+}
+
+/* Fase 1: expandir (solo tamaño) */
+#theme-ripple.is-expanding{
+  opacity:1;
+  transition: clip-path 400ms ease-out, opacity 0ms linear;
+  clip-path:circle(150vmax at var(--x) var(--y));
+}
+
+/* Fase intermedia: cubierto (clip fijo, ANIMA color durante 500ms) */
+#theme-ripple.is-covered{
+  opacity:1;
+  clip-path:circle(150vmax at var(--x) var(--y));
+  transition: background-color 250ms ease;
+}
+
+/* Fase 2: contraer (solo tamaño) */
+#theme-ripple.is-contracting{
+  opacity:1;
+  transition: clip-path 400ms ease-in, opacity 0ms linear;
+  clip-path:circle(0 at var(--x) var(--y));
+}
+
+/* Fase 3: desvanecer overlay */
+#theme-ripple.is-fading{
+  transition: opacity 180ms ease;
+  opacity:0;
+}
+
+/* ========= Temas (aplican a :root y al overlay) ========= */
+:is(:root, #theme-ripple)[data-brand="default"]{
+  --bg:#070604;
+  --card:#100f0d;
+  --primary:#cbc5af;
+  --secondary:#746ea1;
+  --text:#eeebe5;
+}
+:is(:root, #theme-ripple)[data-brand="farmaenvios"]{
+  --bg:#ffffff;
+  --card:#f7f9fc;
+  --primary:#1036af;
+  --secondary:#ff6f01;
+  --text:#111827;
+}
+:is(:root, #theme-ripple)[data-brand="agm"]{
+  --bg:#0F172A;
+  --card:#111827;
+  --primary:#fb652c;
+  --secondary:#213851;
+  --text:#E5E7EB;
+}
+:is(:root, #theme-ripple)[data-brand="massalud"]{
+  --bg:#FFFFFF;
+  --card:#f8f8fd;
+  --primary:#f53994;
+  --secondary:#6757ff;
+  --text:#06065b;
+}
+:is(:root, #theme-ripple)[data-brand="rbduck"]{
+  --bg:#13161d;
+  --card:#1a1e28;
+  --primary:#f07a63;
+  --secondary:#2050d2;
+  --text:#E6E9EE;
+}
+:is(:root, #theme-ripple)[data-brand="neracode"]{
+  --bg:#081951;
+  --card:#594fd3;
+  --primary:#ef7a63;
+  --secondary:#1be4ba;
+  --text:#E5E7EB;
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 12px;
+  }
+}

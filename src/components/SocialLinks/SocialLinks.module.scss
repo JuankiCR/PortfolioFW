@@ -1,0 +1,46 @@
+/* SocialLinks.module.scss */
+.socials {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+
+  &.compact {
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
+    justify-self: center;
+  }
+}
+
+.link {
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 10px;
+  outline: none;
+  transition: background-color .15s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--card);
+  }
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+
+  background-color: var(--primary);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: background-color .2s ease;
+}
+
+.link:hover .icon,
+.link:focus-visible .icon {
+  background-color: var(--secondary);
+}

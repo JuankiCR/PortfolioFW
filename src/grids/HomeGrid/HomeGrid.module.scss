@@ -1,0 +1,124 @@
+.container {
+  min-height: 100vh;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows:
+    auto
+    auto
+    auto
+    auto
+    auto
+  ; 
+  grid-auto-flow: row;
+  gap: 16px;
+
+  grid-template-areas:
+    "IMG IMG Description Description Description Description"
+    "IMG IMG . Contact1 Contact2 ."
+    "Content1 Content1 Content1 Content1 Content1 Content1"
+    "Content2 Content2 Content2 Content2 Content2 Content2"
+    "Content3 Content3 Content3 Content3 Content3 Content3";
+
+  .pfpInGrid {
+    aspect-ratio: 1;
+    width: 60%;
+    background-image:
+      linear-gradient(transparent 90%, var(--bg) 100%),
+      url("/media/me/juanki.gif");
+    background-size: cover;
+    background-position: top;
+    overflow: hidden;
+  }
+}
+
+.compact {
+  display: grid; 
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows:
+    auto
+    auto
+    auto
+    auto
+    auto
+  ; 
+  grid-template-areas: 
+    "Contact1 IMG IMG IMG IMG Contact2"
+    "Description Description Description Description Description Description"
+    "Content1 Content1 Content1 Content1 Content1 Content1"
+    "Content2 Content2 Content2 Content2 Content2 Content2"
+    "Content3 Content3 Content3 Content3 Content3 Content3";
+  
+  .pfpInGrid {
+    aspect-ratio: 1;
+    width: 50%;
+    background-image:
+      linear-gradient(transparent 90%, var(--bg) 100%),
+      url("/media/me/juanki.gif");
+    background-size: cover;
+    background-position: top;
+    overflow: hidden;
+  }
+}
+
+/* Áreas (nombres sin espacios) */
+.IMG { 
+  grid-area: IMG;
+  align-items: center;
+  display: flex;
+  flex-direction: column; 
+  height: fit-content;
+
+  .devName {
+    color: var(--primary);
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .devRole{
+    color: var(--secondary);
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    opacity: 0.8;
+  }
+}
+.Description { 
+  grid-area: Description;
+  height: fit-content;
+  
+  .AboutMeTitle {
+    color: var(--primary);
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+}
+
+.Contact1 {
+  grid-area: Contact1;
+  height: fit-content;
+}
+
+.Contact2 {
+  grid-area: Contact2;
+}
+
+.Content1 { 
+  grid-area: Content1;
+  height: fit-content;
+}
+.Content2 { 
+  grid-area: Content2;
+  height: fit-content;
+}
+.Content3 { 
+  grid-area: Content3;
+  height: fit-content;
+}
